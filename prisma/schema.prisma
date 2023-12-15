@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categoria {
+  id_categoria Int       @id @default(autoincrement())
+  titulo       String    @db.VarChar(100)
+  descricao    String?   @db.VarChar(255)
+  eventos      eventos[]
+}
+
+model eventos {
+  id_evento       Int        @id @default(autoincrement())
+  nome_evento     String     @db.VarChar(100)
+  endereco_evento String     @db.VarChar(255)
+  descricao       String?    @db.VarChar(255)
+  status_evento   Int
+  data_evento     DateTime   @db.Date
+  curtida         Int?
+  imagem_evento   Bytes?     @db.Blob
+  id_usuario      Int?
+  id_categoria    Int?
+  usuario         usuario?   @relation(fields: [id_usuario], references: [id_usuario], onDelete: Restrict, onUpdate: Restrict, map: "eventos_ibfk_1")
+  categoria       categoria? @relation(fields: [id_categoria], references: [id_categoria], onDelete: Restrict, onUpdate: Restrict, map: "eventos_ibfk_2")
+
+  @@index([id_categoria], map: "id_categoria")
+  @@index([id_usuario], map: "id_usuario")
+}
+
+model usuario {
+  id_usuario    Int       @id @default(autoincrement())
+  nome          String    @db.VarChar(30)
+  sobrenome     String    @db.VarChar(50)
+  data_nasc     DateTime  @db.Date
+  email         String    @db.VarChar(150)
+  senha         String    @db.VarChar(50)
+  nivel_usuario Int
+  eventos       eventos[]
+}
