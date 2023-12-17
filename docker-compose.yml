@@ -3,7 +3,7 @@ version: '3.3'
 services:
   app:
     build: .
-    command: [".docker/entrypoint.sh"]
+    command: sh -c "npm install && npm run build && npm run start:dev"
     container_name: heo-app
     env_file:
         - ./.env 
