@@ -22,7 +22,7 @@ model eventos {
   status_evento   Int
   data_evento     DateTime   @db.Date
   curtida         Int?
-  imagem_evento   Bytes?     @db.Blob
+  imagem_evento   String?    @db.VarChar(255)
   id_usuario      Int?
   id_categoria    Int?
   usuario         usuario?   @relation(fields: [id_usuario], references: [id_usuario], onDelete: Restrict, onUpdate: Restrict, map: "eventos_ibfk_1")
@@ -35,9 +35,10 @@ model eventos {
 model usuario {
   id_usuario    Int       @id @default(autoincrement())
   nome          String    @db.VarChar(30)
+  user_img      String?   @db.VarChar(255)
   sobrenome     String    @db.VarChar(50)
   data_nasc     DateTime  @db.Date
-  email         String    @db.VarChar(150)
+  email         String    @unique(map: "email") @db.VarChar(150)
   senha         String    @db.VarChar(50)
   nivel_usuario Int
   eventos       eventos[]
