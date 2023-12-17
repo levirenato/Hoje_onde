@@ -3,7 +3,7 @@ version: '3.3'
 services:
   app:
     build: .
-    entrypoint: .docker/entrypoint.sh
+    entrypoint: ["/bin/sh", "-c", "sh .docker/entrypoint.sh"]
     container_name: heo-app
     env_file:
         - ./.env 
@@ -28,4 +28,4 @@ services:
       - .docker/mariadb/init.sql:/data/aplication/init.sql
     command: --init-file /data/aplication/init.sql
     environment:
-      MARIADB_ROOT_PASSWORD: ${DB_PSWD} 
+      MARIADB_ROOT_PASSWORD: 123
