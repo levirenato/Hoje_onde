@@ -18,8 +18,8 @@ export class EventsService {
     return this.prisma.eventos.findMany();
   }
 
-  async findSomething(nome?: string, categoria?: string, nivel?: string) {
-    if (nome != null || categoria != null || nivel != null) {
+  async findSomething(nome?: string, categoria?: string) {
+    if (nome != null || categoria != null) {
       return this.prisma.eventos.findMany({
         where: {
           OR: [
@@ -31,11 +31,6 @@ export class EventsService {
             {
               categoria: {
                 titulo: categoria,
-              },
-            },
-            {
-              usuario: {
-                nivel_usuario: +nivel,
               },
             },
           ],

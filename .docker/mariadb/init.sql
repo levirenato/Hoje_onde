@@ -66,7 +66,17 @@ VALUES
 ('profissional'), 
 ('inovação');
 
-INSERT INTO eventos(nome_evento,endereco_evento, descricao, status_evento, data_evento, curtida, imagem_evento, id_usuario, id_categoria) 
+INSERT INTO eventos(nome_evento,descricao,endereco_evento, status_evento, data_evento, curtida, imagem_evento, id_usuario, id_categoria) 
 VALUES 
-('Show de Rap', 'show massa de rap','Recife', 1, '2024-01-15', NULL, 'https://i.imgur.com/WYgVreP.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show')),
-('Show de Funk', 'show massa de Funk','Jaboatão dos Guararapes',1, '2024-02-20', NULL, 'https://i.imgur.com/bCwK5Sf.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show'));
+('Show de Rap', 'show massa de rap','Recife', 1, '2024-01-15', 0, 'https://i.imgur.com/WYgVreP.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show')),
+('Show de Funk', 'show massa de Funk','Jaboatão dos Guararapes',1, '2024-02-20', 0, 'https://i.imgur.com/bCwK5Sf.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show'));
+('Festival de Jazz', 'Um evento incrível de jazz ao ar livre', 'Olinda', 1, '2024-03-10', 0, 'https://cdn4.vectorstock.com/i/1000x1000/45/73/jazz-festival-poster-4-vector-28034573.jpg', 1, (SELECT id_categoria FROM categoria WHERE titulo = 'cultura')),
+('Feira de Tecnologia', 'Veja as últimas inovações tecnológicas', 'Paulista', 1, '2024-04-15', 0, 'https://newtrade.com.br/wp-content/uploads/2017/01/ces-09-01.jpg', 3, (SELECT id_categoria FROM categoria WHERE titulo = 'tecnologia')),
+('Aula de Fotografia', 'Aprenda técnicas avançadas de fotografia', 'Cabo de Santo Agostinho', 1, '2024-05-20', 0, 'https://i.ytimg.com/vi/TUWD7aRUvM0/maxresdefault.jpg', 4, (SELECT id_categoria FROM categoria WHERE titulo = 'educação')),
+('Exposição de Arte Contemporânea', 'Descubra a arte moderna em uma exposição única', 'Recife', 1, '2024-06-25', 0, 'https://www.cultura.pr.gov.br/sites/default/arquivos_restritos/files/imagem/2023-03/fora_das_sombras_1._foto_marcello_kawase.jpg', 6, (SELECT id_categoria FROM categoria WHERE titulo = 'cultura')),
+('Corrida de saco', 'Participe da corrida e promova a saúde', 'Jaboatão dos Guararapes', 1, '2024-07-30', 0, 'https://www.lucasdorioverde.mt.gov.br/arquivos/noticias/2809/g/wwb_lrv.JPG', 8, (SELECT id_categoria FROM categoria WHERE titulo = 'esportes')),
+('Seminário de Marketing Digital', 'Explore as estratégias mais recentes de marketing digital', 'Ipojuca', 1, '2024-08-05', 0, 'https://idpublicidade.com.br/wp-content/uploads/2020/05/marketing-digital-vendas-b2b-idpublicidade.jpg', 9, (SELECT id_categoria FROM categoria WHERE titulo = 'profissional')),
+('Feira de Saúde', 'Descubra maneiras de manter uma vida saudável', 'Camaragibe', 1, '2024-09-10', 0, 'https://noticias.unisanta.br/wp-content/uploads/2019/08/feiradasaude.jpg', 11, (SELECT id_categoria FROM categoria WHERE titulo = 'saúde')),
+('Workshop de Desenvolvimento Pessoal', 'Aprimore suas habilidades pessoais e profissionais', 'São Lourenço da Mata', 1, '2024-10-15', 0, 'https://blog.portalpos.com.br/app/uploads/2021/07/etapas-do-desenvolvimento-pessoal.jpg', 12, (SELECT id_categoria FROM categoria WHERE titulo = 'profissional')),
+('Competição de Surf', 'Assista aos melhores surfistas em ação', 'Igarassu', 1, '2024-11-20', 0, 'https://www.uninassau.edu.br/sites/mauriciodenassau.edu.br/files/fields/imagemLateral/noticias/2023/04/whatsapp_image_2023-04-27_at_21.56.44_0_1.jpeg', 14, (SELECT id_categoria FROM categoria WHERE titulo = 'esportes')),
+('Feira de Inovação', 'Conheça as últimas inovações em tecnologia e negócios', 'Abreu e Lima', 1, '2024-12-25', 0, 'https://images.sympla.com.br/6375bcb213d29.png', 16, (SELECT id_categoria FROM categoria WHERE titulo = 'inovação'));

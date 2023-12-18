@@ -27,14 +27,8 @@ export class EventsController {
   }
 
   @Get()
-  async findAll(
-    @Query() query: { nome: string; categoria: string; nivel: string },
-  ) {
-    return this.eventsService.findSomething(
-      query.nome,
-      query.categoria,
-      query.nivel,
-    );
+  async findAll(@Query() query: { nome: string; categoria: string }) {
+    return this.eventsService.findSomething(query.nome, query.categoria);
   }
 
   @Patch(':id')
