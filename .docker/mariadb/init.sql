@@ -69,7 +69,7 @@ VALUES
 INSERT INTO eventos(nome_evento,descricao,endereco_evento, status_evento, data_evento, curtida, imagem_evento, id_usuario, id_categoria) 
 VALUES 
 ('Show de Rap', 'show massa de rap','Recife', 1, '2024-01-15', 0, 'https://i.imgur.com/WYgVreP.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show')),
-('Show de Funk', 'show massa de Funk','Jaboatão dos Guararapes',1, '2024-02-20', 0, 'https://i.imgur.com/bCwK5Sf.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show'));
+('Show de Funk', 'show massa de Funk','Jaboatão dos Guararapes',1, '2024-02-20', 0, 'https://i.imgur.com/bCwK5Sf.jpg', 2,(SELECT id_categoria FROM categoria WHERE titulo = 'show')),
 ('Festival de Jazz', 'Um evento incrível de jazz ao ar livre', 'Olinda', 1, '2024-03-10', 0, 'https://cdn4.vectorstock.com/i/1000x1000/45/73/jazz-festival-poster-4-vector-28034573.jpg', 1, (SELECT id_categoria FROM categoria WHERE titulo = 'cultura')),
 ('Feira de Tecnologia', 'Veja as últimas inovações tecnológicas', 'Paulista', 1, '2024-04-15', 0, 'https://newtrade.com.br/wp-content/uploads/2017/01/ces-09-01.jpg', 3, (SELECT id_categoria FROM categoria WHERE titulo = 'tecnologia')),
 ('Aula de Fotografia', 'Aprenda técnicas avançadas de fotografia', 'Cabo de Santo Agostinho', 1, '2024-05-20', 0, 'https://i.ytimg.com/vi/TUWD7aRUvM0/maxresdefault.jpg', 4, (SELECT id_categoria FROM categoria WHERE titulo = 'educação')),

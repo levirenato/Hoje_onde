@@ -22,7 +22,7 @@ export class EventsService {
     if (nome != null || categoria != null) {
       return this.prisma.eventos.findMany({
         where: {
-          OR: [
+          AND: [
             {
               nome_evento: {
                 contains: nome,

@@ -11,7 +11,9 @@ import {
 import { EventsService } from './events.service';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Eventos')
 @Controller('events')
 export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
@@ -27,6 +29,8 @@ export class EventsController {
   }
 
   @Get()
+  @ApiQuery({ name: 'nome', required: false })
+  @ApiQuery({ name: 'categoria', required: false })
   async findAll(@Query() query: { nome: string; categoria: string }) {
     return this.eventsService.findSomething(query.nome, query.categoria);
   }
