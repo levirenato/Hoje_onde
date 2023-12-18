@@ -18,11 +18,79 @@ export class EventsService {
     return this.prisma.eventos.findMany();
   }
 
-  async findName(categoria: string): Promise<EventEntity[]> {
-    return this.prisma.eventos.findMany({
-      where: { categoria: { titulo: categoria } },
-      include: { categoria: true },
-    });
+  async findSomething(nome?: string, categoria?: string, nivel?: string) {
+    if (nome != null || categoria != null || nivel != null) {
+      return this.prisma.eventos.findMany({
+        where: {
+          OR: [
+            {
+              nome_evento: {
+                contains: nome,
+              },
+            },
+            {
+              categoria: {
+                titulo: categoria,
+              },
+            },
+            {
+              usuario: {
+                nivel_usuario: +nivel,
+              },
+            },
+          ],
+        },
+        select: {
+          id_evento: true,
+          nome_evento: true,
+          endereco_evento: true,
+          descricao: true,
+          status_evento: true,
+          data_evento: true,
+          curtida: true,
+          imagem_evento: true,
+          categoria: {
+            select: {
+              titulo: true,
+            },
+          },
+          usuario: {
+            select: {
+              id_usuario: true,
+              nome: true,
+              user_img: true,
+              nivel_usuario: true,
+            },
+          },
+        },
+      });
+    } else {
+      return this.prisma.eventos.findMany({
+        select: {
+          id_evento: true,
+          nome_evento: true,
+          endereco_evento: true,
+          descricao: true,
+          status_evento: true,
+          data_evento: true,
+          curtida: true,
+          imagem_evento: true,
+          categoria: {
+            select: {
+              titulo: true,
+            },
+          },
+          usuario: {
+            select: {
+              id_usuario: true,
+              nome: true,
+              user_img: true,
+              nivel_usuario: true,
+            },
+          },
+        },
+      });
+    }
   }
 
   async findID(id: number): Promise<EventEntity> {

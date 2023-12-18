@@ -21,18 +21,20 @@ export class EventsController {
     return this.eventsService.create(createEventDto);
   }
 
-  @Get()
-  findAll() {
-    return this.eventsService.findAll();
-  }
   @Get(':id')
-  findByID(@Param('id') id: string) {
+  findByID(@Param('id') id: number) {
     return this.eventsService.findID(+id);
   }
 
-  @Get('')
-  findBySsomething(@Query() categoria: string) {
-    return this.eventsService.findName(categoria);
+  @Get()
+  async findAll(
+    @Query() query: { nome: string; categoria: string; nivel: string },
+  ) {
+    return this.eventsService.findSomething(
+      query.nome,
+      query.categoria,
+      query.nivel,
+    );
   }
 
   @Patch(':id')
