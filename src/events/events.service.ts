@@ -18,7 +18,7 @@ export class EventsService {
     return this.prisma.eventos.findMany();
   }
 
-  async findSomething(nome?: string, categoria?: string) {
+  async findSomething(nome?: string, categoria?: string[]) {
     if (nome != null || categoria != null) {
       return this.prisma.eventos.findMany({
         where: {
@@ -30,7 +30,7 @@ export class EventsService {
             },
             {
               categoria: {
-                titulo: categoria,
+                titulo: { in: categoria },
               },
             },
           ],
