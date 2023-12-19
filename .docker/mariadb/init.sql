@@ -63,7 +63,7 @@ VALUES
 ('show'), 
 ('saúde'), 
 ('esportes'), 
-('governo'),
+('governo');
 
 INSERT INTO eventos(nome_evento,descricao,endereco_evento, status_evento, data_evento, curtida, imagem_evento, id_usuario, id_categoria) 
 VALUES 
