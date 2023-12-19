@@ -30,7 +30,12 @@ export class EventsController {
 
   @Get()
   @ApiQuery({ name: 'nome', required: false })
-  @ApiQuery({ name: 'categoria', required: false, isArray: true })
+  @ApiQuery({
+    name: 'categoria[]',
+    required: false,
+    type: 'string',
+    isArray: true,
+  })
   async findAll(
     @Query()
     query: {
