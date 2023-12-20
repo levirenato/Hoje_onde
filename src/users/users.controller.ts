@@ -1,18 +1,30 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiBody } from '@nestjs/swagger';
+import { ApiBody, ApiTags } from '@nestjs/swagger';
 import { HashSenhaPipe } from 'src/pipes/hash-senha/hash-senha.pipe';
 
+@ApiTags('Usuarios')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiBody({type: CreateUserDto})
+  @ApiBody({ type: CreateUserDto })
   @Post('criar')
-  create(@Body() {senha,...createUserDto}: CreateUserDto, @Body('senha', HashSenhaPipe)senhaHash: string) {
-    return this.usersService.create({...createUserDto, senha: senhaHash});
+  create(
+    @Body() { senha, ...createUserDto }: CreateUserDto,
+    @Body('senha', HashSenhaPipe) senhaHash: string,
+  ) {
+    return this.usersService.create({ ...createUserDto, senha: senhaHash });
   }
 
   @Get()

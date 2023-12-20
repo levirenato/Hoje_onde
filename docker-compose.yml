@@ -5,9 +5,8 @@ services:
     build: .
     command: sh -c "npm install && npm run build && npm run start:dev"
     container_name: heo-app
-    environment: 
-      - SAL_SENHA="$2b$10$Q.errXW15vHL0OoOAZyaFu"
-      - JWT_SECRET="L3v1M4th3usTh14g0"
+    env_file:
+      - .env
     ports:
       - "3000:3000"
       - "5555:5555"
