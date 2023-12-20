@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS usuario(
     sobrenome varchar(50) not null,
     data_nasc date not null,
     email varchar(150) not null,
-    senha varchar(50) not null,
+    senha varchar(255) not null,
     nivel_usuario integer not null,
     PRIMARY KEY (id_usuario),
     UNIQUE (email)
