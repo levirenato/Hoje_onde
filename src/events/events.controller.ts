@@ -55,4 +55,14 @@ export class EventsController {
   remove(@Param('id') id: string) {
     return this.eventsService.remove(+id);
   }
+
+  @Patch(":id/like")
+  like(@Param('id') id: string) {
+    return this.eventsService.like(+id);
+  }
+
+  @Patch(":id/deslike")
+  deslike(@Param('id') id: string) {
+    return this.eventsService.deslike(+id);
+  }
 }

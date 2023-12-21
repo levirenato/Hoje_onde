@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS eventos(
     id_categoria integer,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria),
-    PRIMARY KEY (id_evento)
-);
+    PRIMARY KEY (id_evento));
+
 INSERT INTO usuario(nome, user_img ,sobrenome, data_nasc, email, senha, nivel_usuario) 
 VALUES
 ('Thiago' , 'https://i.imgur.com/mS3vdHx.jpg' ,'Barbosa', '2000-07-01', 'thiagobarbosa@gmail.com', 'thiago123', 2),
@@ -53,7 +53,8 @@ VALUES
 ('Julia','https://i.imgur.com/5jAvaVG.jpg' ,'Barros', '1950-02-15', 'juliabarros@gmail.com', 'julia123', 1),
 ('Lucas','https://i.imgur.com/QmY9VXH.jpg' , 'Cardoso', '2001-03-05', 'lucascardoso@gmail.com', 'lucas123', 3),
 ('Mariana','https://i.imgur.com/hEfMzDl.jpg', 'Ribeiro', '1998-04-25', 'marianaribeiro@gmail.com', 'mariana123', 2),
-('Nelson' , 'https://i.imgur.com/bQe8jDP.jpg' , 'Martins', '1993-05-10', 'nelsonmartins@gmail.com', 'nelson123', 1);
+('Nelson' , 'https://i.imgur.com/bQe8jDP.jpg' , 'Martins', '1993-05-10', 'nelsonmartins@gmail.com', 'nelson123', 1)
+;
 
 INSERT INTO categoria(titulo) 
 VALUES 

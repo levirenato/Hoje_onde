@@ -1,5 +1,5 @@
 import { EventEntity } from './entities/event.entity';
-import { Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, NotAcceptableException, NotFoundException } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -114,5 +114,27 @@ export class EventsService {
         id_evento: id,
       },
     });
+  }
+  
+  async like(id: number) {
+    const evento = await this.prisma.eventos.findUnique({where:{id_evento:id}});
+    if(!evento){
+      throw new NotFoundException("Evento Não encontrado")
+    }
+    const like = evento.curtida + 1;
+    return this.prisma.eventos.update({where:{id_evento:id}, data: {curtida : like } })
+  }
+  async deslike(id: number) {
+    const evento = await this.prisma.eventos.findUnique({where:{id_evento:id}});
+    if(!evento){
+      throw new NotFoundException("Evento Não encontrado")
+    }
+    if(evento.curtida > 0 ){
+      const deslike = evento.curtida - 1;
+      return this.prisma.eventos.update({where:{id_evento:id}, data: {curtida : deslike } })
+    } else {
+      throw new ForbiddenException("Não é possivel dar Deslike")
+    }
+    
   }
 }
