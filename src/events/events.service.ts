@@ -115,7 +115,7 @@ export class EventsService {
       },
     });
   }
-  
+
   async like(id: number) {
     const evento = await this.prisma.eventos.findUnique({where:{id_evento:id}});
     if(!evento){
@@ -124,6 +124,7 @@ export class EventsService {
     const like = evento.curtida + 1;
     return this.prisma.eventos.update({where:{id_evento:id}, data: {curtida : like } })
   }
+  
   async deslike(id: number) {
     const evento = await this.prisma.eventos.findUnique({where:{id_evento:id}});
     if(!evento){
